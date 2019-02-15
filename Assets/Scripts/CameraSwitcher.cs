@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraSwitcher : MonoBehaviour
 {
-    public GameObject flyCamera;
+    public GameObject flyCameraPrefab;
+    GameObject flyCamera;
 
     UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController FPController;
     Camera FPCamera;
@@ -21,7 +22,7 @@ public class CameraSwitcher : MonoBehaviour
 
         FPController.enabled = true;
         FPCamera.enabled = true;
-        flyCamera.SetActive(false);
+        //flyCamera.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,16 +36,13 @@ public class CameraSwitcher : MonoBehaviour
             {
                 FPController.enabled = false;
                 FPCamera.enabled = false;
-                flyCamera.SetActive(true);
-                flyCamera.transform.position = FPController.transform.position;
-                flyCamera.transform.rotation = FPController.transform.rotation;
+                flyCamera = Instantiate(flyCameraPrefab, FPController.transform.position, FPController.transform.rotation);
             }
             else
             {
                 FPController.enabled = true;
                 FPCamera.enabled = true;
-                FPCamera.enabled = true;
-                flyCamera.SetActive(false);
+                Destroy(flyCamera);
             }
         }
     }
