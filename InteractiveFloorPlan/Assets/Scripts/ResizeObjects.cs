@@ -15,7 +15,7 @@ public class ResizeObjects : MonoBehaviour
     {
        if (Input.GetKeyDown("1"))
         {
-            transform.localScale = new Vector3(Random.Range(0.2f, 10.0f), 1, Random.Range(0.2f, 10.0f));
+            transform.localScale = new Vector3(Random.Range(0.2f, 10.0f), Random.Range(0.2f, 10.0f), Random.Range(0.2f, 10.0f));
             
         }
 

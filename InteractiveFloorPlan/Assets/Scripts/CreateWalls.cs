@@ -24,6 +24,7 @@ public class CreateWalls : MonoBehaviour
     void Update()
     {
         getInput();
+
     }
 
     void getInput()
