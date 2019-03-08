@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XSensitivity: 2
   YSensitivity: 2
+  baseSpeed: 10
   speedModifier: 3
   keySensivity: 20
   flyCamera: {fileID: 1415736997268375219}
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415736997085779377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6861437951de9d346968e2b9f3807583, type: 3}
   m_Name: 
