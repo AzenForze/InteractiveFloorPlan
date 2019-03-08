@@ -11,6 +11,8 @@ public class CreateWalls : MonoBehaviour
     Vector3 startPos;
     Vector3 endPos;
     GameObject wall;
+    bool xSnapping = false;
+    bool zSnapping = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,23 @@ public class CreateWalls : MonoBehaviour
                 adjust();
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            zSnapping = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            xSnapping = true;
+        }
+        else if( Input.GetKeyUp(KeyCode.Z))
+        {
+            zSnapping = false;
+        }
+        else if(Input.GetKeyUp(KeyCode.X))
+        {
+            xSnapping = false;
+        }
     }
 
     void setStart()
@@ -54,6 +73,15 @@ public class CreateWalls : MonoBehaviour
     void adjust()
     {
         endPos = gridSnap(getWorldPoint());
+        if(xSnapping)
+        {
+            endPos.x = startPos.x;
+        }
+        else if(zSnapping)
+        {
+            endPos.z = startPos.z;
+        }
+
         adjustWall();
     }
 
