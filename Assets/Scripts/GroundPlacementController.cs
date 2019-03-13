@@ -14,6 +14,17 @@ public class GroundPlacementController : MonoBehaviour
     private GameObject currentPlaceableObject;
     private float iRotation;
     private float speed = 10f;
+
+    private List<GameObject> furnitureList = new List<GameObject>();
+    private int furnitureIndex = 0;
+
+    void Start()
+    {
+        furnitureList.Add(Resources.Load<GameObject>("Furniture/RFAIPP_Bed_2"));
+        furnitureList.Add(Resources.Load<GameObject>("Furniture/RFAIPP_Chair_1"));
+        placeableObjectPrefab = furnitureList[0];
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,13 +42,26 @@ public class GroundPlacementController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObjectExtensions.ChangeLayers(currentPlaceableObject, "Default");
+            furnitureIndex = 0;
             currentPlaceableObject = null;
         }
     }
 
     private void RotateFromInput()
     {
-        
+        if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            furnitureIndex = (furnitureIndex + 1) % furnitureList.Count;
+            var nextFurniture = Instantiate(furnitureList[furnitureIndex], currentPlaceableObject.transform.position, currentPlaceableObject.transform.rotation);
+            Destroy(currentPlaceableObject);
+            currentPlaceableObject = nextFurniture;
+            Debug.Log("Pressed Right Navigation Key");
+        } else if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            Debug.Log("Pressed Left Navigation Key");
+        }
+
+
         
         if (Input.GetKey(KeyCode.X))
         {
