@@ -123,6 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3699c3259cf2b41be0d80789630195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  deleteObjectHotkey: 8
 --- !u!65 &2114824999813726809
 BoxCollider:
   m_ObjectHideFlags: 0
