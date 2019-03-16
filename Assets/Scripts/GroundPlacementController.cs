@@ -145,23 +145,10 @@ public class GroundPlacementController : MonoBehaviour
         {
             new List<GameObject>()
             {
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot")
-            },
-            new List<GameObject>()
-            {
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Couch_2"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Chair_1"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Coffee_Table_2"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Bookcase_2"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
@@ -171,11 +158,11 @@ public class GroundPlacementController : MonoBehaviour
             },
             new List<GameObject>()
             {
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
-                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Bed_2"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Chair_1"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Bookcase_2"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Coffee_Table_2"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Couch_2"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
@@ -184,8 +171,21 @@ public class GroundPlacementController : MonoBehaviour
             },
             new List<GameObject>()
             {
+                Resources.Load<GameObject>("Furniture/RFAIPP_Gas_Stove"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Chair_1"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Coffee_Table_2"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Kitchen_Sink"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Fridge"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            },
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Furniture/RFAIPP_Shower_1"),
+                Resources.Load<GameObject>("Furniture/RFAIPP_Kitchen_Sink"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
                 Resources.Load<GameObject>("Prefabs/Default_Pivot"),
