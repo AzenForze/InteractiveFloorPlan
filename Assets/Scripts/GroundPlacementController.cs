@@ -2,29 +2,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GroundPlacementController : MonoBehaviour
 {
-    [SerializeField]
     private GameObject placeableObjectPrefab;
 
     [SerializeField]
     private KeyCode newObjectHotkey = KeyCode.P;
+    private KeyCode deleteObjectHotkey = KeyCode.Backspace;
 
     private GameObject currentPlaceableObject;
+
+    private List<List<GameObject>> furnitureItems;
+
     private float iRotation;
     private float speed = 10f;
 
-    private List<GameObject> furnitureList = new List<GameObject>();
-    private int furnitureIndex = 0;
+    private bool Slot_select = false;
 
+    public Button Slot1_Button, Slot2_Button,
+        Slot3_Button, Slot4_Button, Slot5_Button,
+        Slot6_Button, Slot7_Button, Slot8_Button,
+        Slot9_Button, Slot10_Button;
+
+    public Dropdown roomSelection;
+
+    private int category;
+
+    // Start is called before the first frame update
     void Start()
     {
-        furnitureList.Add(Resources.Load<GameObject>("Furniture/RFAIPP_Bed_2"));
-        furnitureList.Add(Resources.Load<GameObject>("Furniture/RFAIPP_Chair_1"));
-        placeableObjectPrefab = furnitureList[0];
-    }
+        // Load all items to be used
+        LoadRoomItems();
 
+        // Initial object
+        placeableObjectPrefab = furnitureItems[0][0];
+
+        // Button Listener
+        Slot1_Button.onClick.AddListener(() => { SlotAdd(0); });
+        Slot2_Button.onClick.AddListener(() => { SlotAdd(1); });
+        Slot3_Button.onClick.AddListener(() => { SlotAdd(2); });
+        Slot4_Button.onClick.AddListener(() => { SlotAdd(3); });
+        Slot5_Button.onClick.AddListener(() => { SlotAdd(4); });
+        Slot6_Button.onClick.AddListener(() => { SlotAdd(5); });
+        Slot7_Button.onClick.AddListener(() => { SlotAdd(6); });
+        Slot8_Button.onClick.AddListener(() => { SlotAdd(7); });
+        Slot9_Button.onClick.AddListener(() => { SlotAdd(8); });
+        Slot10_Button.onClick.AddListener(() => { SlotAdd(9); });
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -37,31 +65,24 @@ public class GroundPlacementController : MonoBehaviour
         }
     }
 
+    private void SlotAdd(int slotNum)
+    {
+        Slot_select = true;
+        category = roomSelection.value;
+        placeableObjectPrefab = furnitureItems[category][slotNum];
+    }
+
     private void ReleaseIfClicked()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             GameObjectExtensions.ChangeLayers(currentPlaceableObject, "Default");
-            furnitureIndex = 0;
             currentPlaceableObject = null;
         }
     }
 
     private void RotateFromInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightBracket))
-        {
-            furnitureIndex = (furnitureIndex + 1) % furnitureList.Count;
-            var nextFurniture = Instantiate(furnitureList[furnitureIndex], currentPlaceableObject.transform.position, currentPlaceableObject.transform.rotation);
-            Destroy(currentPlaceableObject);
-            currentPlaceableObject = nextFurniture;
-            Debug.Log("Pressed Right Navigation Key");
-        } else if (Input.GetKeyDown(KeyCode.LeftBracket))
-        {
-            Debug.Log("Pressed Left Navigation Key");
-        }
-
-
         
         if (Input.GetKey(KeyCode.X))
         {
@@ -95,20 +116,86 @@ public class GroundPlacementController : MonoBehaviour
 
     private void HandleNewHKObject()
     {
-        if(Input.GetKeyDown(newObjectHotkey))
+        if(Input.GetKeyDown(deleteObjectHotkey))
+        {
+            Destroy(currentPlaceableObject);
+        }
+
+        if(Input.GetKeyDown(newObjectHotkey) || Slot_select)
         {
             if(currentPlaceableObject == null)
             {
                 currentPlaceableObject = Instantiate(placeableObjectPrefab);
                 //currentPlaceableObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+                Slot_select = false;
             }
             else
             {
                 Destroy(currentPlaceableObject);
                 //currentPlaceableObject.layer = LayerMask.NameToLayer("Default");
+                Slot_select = false;
             }
 
         }
+    }
+
+    private void LoadRoomItems()
+    {
+        furnitureItems = new List<List<GameObject>>()
+        {
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            },
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            },
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            },
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            }
+        };
     }
 }
 
