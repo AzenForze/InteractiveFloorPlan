@@ -5,14 +5,16 @@ namespace Assets.Scripts.Controller
     // Mostly handles mouselook. And transitions to Overview state.
     class FreecamState : IState
     {
-        private Freelook context;
+        private FlyingState context;
+        private GameObject flyingObject;
 
-        float rotationX = 0f;
-        float rotationY = 0f;
+        private Freelook freelookScript;
 
-        public FreecamState(Freelook context)
+        public FreecamState(FlyingState context, GameObject flyingObject)
         {
             this.context = context;
+            this.flyingObject = flyingObject;
+            this.freelookScript = flyingObject.GetComponent<Freelook>();
         }
 
         public void Enter() { }
@@ -26,18 +28,7 @@ namespace Assets.Scripts.Controller
                 context.ChangeState(context.overviewState);
             }
 
-            // instead of going from 0 to 360 cw, go from -180 to 180 ccw, keeping 0 the same
-            var direction = 540 - context.transform.localEulerAngles.x; // (360 - x) + 180 = 540 - x
-            direction %= 360;
-            direction -= 180;
-
-            rotationX = context.transform.localEulerAngles.y + Input.GetAxis("Mouse X") * context.XSensitivity;
-            rotationX = ((rotationX + 180) % 360) - 180;
-            rotationY = direction + Input.GetAxis("Mouse Y") * context.YSensitivity;
-            rotationY = Mathf.Clamp(rotationY, -90, 90);
-
-            context.transform.localRotation = Quaternion.AngleAxis(rotationX, Vector3.up);
-            context.transform.localRotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
+            freelookScript.Mouselook();
         }
     }
 }

@@ -8,7 +8,8 @@ public class AgentController : MonoBehaviour
 {
     private IState state;
     public GameObject FPController;
-    public GameObject FlyCamPrefab;
+    public GameObject FlyingCamera;
+    public GameObject hud;
 
     // Possible states
     public IState WalkingState;
@@ -20,7 +21,8 @@ public class AgentController : MonoBehaviour
         RigidbodyFirstPersonController controller = FPController.GetComponent<RigidbodyFirstPersonController>();
         Camera camera = controller.cam;
         WalkingState = new WalkingState(this, controller, camera);
-        FlyingState = new FlyingState(this, FlyCamPrefab, FPController.transform);
+
+        FlyingState = new FlyingState(this, FlyingCamera, FPController.transform, hud);
         this.state = this.WalkingState;
     }
 

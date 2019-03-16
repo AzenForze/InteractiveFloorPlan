@@ -5,20 +5,39 @@ namespace Assets.Scripts.Controller
 {
     class OverviewState : IState
     {
-        private Freelook context;
+        private FlyingState context;
+
+        private IState substate;
+
+        //states
+        public WallState wallState;
+        public MenuState menuState;
+
+        //private
+        private GameObject flyingObject;
         private Camera flyCamera;
         private CreateWalls createWallsScript;
 
-        public OverviewState(Freelook context, Camera flyCamera, CreateWalls createWallsScript)
+        public OverviewState(FlyingState context, GameObject flyingObject, GameObject hud)
         {
             this.context = context;
-            this.flyCamera = flyCamera;
-            this.createWallsScript = createWallsScript;
+            this.flyingObject = flyingObject;
+            this.flyCamera = flyingObject.GetComponent<Freelook>().flyCamera;
+            this.createWallsScript = flyingObject.GetComponent<CreateWalls>();
+
+            this.wallState = new WallState(this, createWallsScript);
+            this.menuState = new MenuState(this, hud);
+
+            // Initial state
+            this.substate = this.wallState;
         }
 
         void IState.Enter()
         {
-            var transform = context.transform;
+            this.substate = this.wallState;
+            this.substate.Enter();
+
+            var transform = flyingObject.transform;
 
             transform.localRotation = Quaternion.AngleAxis(transform.localEulerAngles.y, Vector3.up);
             transform.localRotation *= Quaternion.AngleAxis(0, Vector3.left);
@@ -31,6 +50,7 @@ namespace Assets.Scripts.Controller
 
         void IState.Exit()
         {
+            this.substate.Exit();
             flyCamera.transform.localRotation = Quaternion.AngleAxis(0, Vector3.left);
             Cursor.lockState = CursorLockMode.Locked;
             createWallsScript.enabled = false;
@@ -41,7 +61,17 @@ namespace Assets.Scripts.Controller
             if(Input.GetKeyDown(KeyCode.T))
             {
                 context.ChangeState(context.freecamState);
+                return;
             }
+
+            this.substate.Update();
+        }
+
+        public void ChangeState(IState newState)
+        {
+            this.substate.Exit();
+            this.substate = newState;
+            this.substate.Enter();
         }
     }
 }
