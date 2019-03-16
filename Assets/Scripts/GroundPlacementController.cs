@@ -14,12 +14,9 @@ public class GroundPlacementController : MonoBehaviour
     private KeyCode deleteObjectHotkey = KeyCode.Backspace;
 
     private GameObject currentPlaceableObject;
-    private GameObject LR1, LR2, LR3, LR4,
-        LR5, LR6, LR7, LR8, LR9, LR10,
-        B1, B2, B3, B4, B5, B6, B7, B8,
-        B9, B10, K1, K2, K3, K4, K5, K6,
-        K7, K8, K9, K10, BA1, BA2, BA3,
-        BA4, BA5, BA6, BA7, BA8, BA9, BA10;
+
+    private List<List<GameObject>> furnitureItems;
+
     private float iRotation;
     private float speed = 10f;
 
@@ -39,17 +36,21 @@ public class GroundPlacementController : MonoBehaviour
     {
         // Load all items to be used
         LoadRoomItems();
-        // Button Listener 
-        Slot1_Button.onClick.AddListener(Slot1Add);
-        Slot2_Button.onClick.AddListener(Slot2Add);
-        Slot3_Button.onClick.AddListener(Slot3Add);
-        Slot4_Button.onClick.AddListener(Slot4Add);
-        Slot5_Button.onClick.AddListener(Slot5Add);
-        Slot6_Button.onClick.AddListener(Slot6Add);
-        Slot7_Button.onClick.AddListener(Slot7Add);
-        Slot8_Button.onClick.AddListener(Slot8Add);
-        Slot9_Button.onClick.AddListener(Slot9Add);
-        Slot10_Button.onClick.AddListener(Slot10Add);
+
+        // Initial object
+        placeableObjectPrefab = furnitureItems[0][0];
+
+        // Button Listener
+        Slot1_Button.onClick.AddListener(() => { SlotAdd(0); });
+        Slot2_Button.onClick.AddListener(() => { SlotAdd(1); });
+        Slot3_Button.onClick.AddListener(() => { SlotAdd(2); });
+        Slot4_Button.onClick.AddListener(() => { SlotAdd(3); });
+        Slot5_Button.onClick.AddListener(() => { SlotAdd(4); });
+        Slot6_Button.onClick.AddListener(() => { SlotAdd(5); });
+        Slot7_Button.onClick.AddListener(() => { SlotAdd(6); });
+        Slot8_Button.onClick.AddListener(() => { SlotAdd(7); });
+        Slot9_Button.onClick.AddListener(() => { SlotAdd(8); });
+        Slot10_Button.onClick.AddListener(() => { SlotAdd(9); });
 
     }
     // Update is called once per frame
@@ -64,208 +65,11 @@ public class GroundPlacementController : MonoBehaviour
         }
     }
 
-    private void Slot1Add()
+    private void SlotAdd(int slotNum)
     {
         Slot_select = true;
         category = roomSelection.value;
-
-        switch(category)
-        {
-            case 0:
-                placeableObjectPrefab = LR1;
-                break;
-            case 1:
-                placeableObjectPrefab = B1;
-                break;
-            case 2:
-                placeableObjectPrefab = K1;
-                break;
-            case 3:
-                placeableObjectPrefab = BA1;
-                break;
-        }
-        
-    }
-    private void Slot2Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR2;
-                break;
-            case 1:
-                placeableObjectPrefab = B2;
-                break;
-            case 2:
-                placeableObjectPrefab = K2;
-                break;
-            case 3:
-                placeableObjectPrefab = BA2;
-                break;
-        }
-    }
-    private void Slot3Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR3;
-                break;
-            case 1:
-                placeableObjectPrefab = B3;
-                break;
-            case 2:
-                placeableObjectPrefab = K3;
-                break;
-            case 3:
-                placeableObjectPrefab = BA3;
-                break;
-        }
-    }
-    private void Slot4Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR4;
-                break;
-            case 1:
-                placeableObjectPrefab = B4;
-                break;
-            case 2:
-                placeableObjectPrefab = K4;
-                break;
-            case 3:
-                placeableObjectPrefab = BA4;
-                break;
-        }
-    }
-    private void Slot5Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR5;
-                break;
-            case 1:
-                placeableObjectPrefab = B5;
-                break;
-            case 2:
-                placeableObjectPrefab = K5;
-                break;
-            case 3:
-                placeableObjectPrefab = BA5;
-                break;
-        }
-    }
-    private void Slot6Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR6;
-                break;
-            case 1:
-                placeableObjectPrefab = B6;
-                break;
-            case 2:
-                placeableObjectPrefab = K6;
-                break;
-            case 3:
-                placeableObjectPrefab = BA6;
-                break;
-        }
-    }
-    private void Slot7Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR7;
-                break;
-            case 1:
-                placeableObjectPrefab = B7;
-                break;
-            case 2:
-                placeableObjectPrefab = K7;
-                break;
-            case 3:
-                placeableObjectPrefab = BA7;
-                break;
-        }
-    }
-    private void Slot8Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR8;
-                break;
-            case 1:
-                placeableObjectPrefab = B8;
-                break;
-            case 2:
-                placeableObjectPrefab = K8;
-                break;
-            case 3:
-                placeableObjectPrefab = BA8;
-                break;
-        }
-    }
-    private void Slot9Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR9;
-                break;
-            case 1:
-                placeableObjectPrefab = B9;
-                break;
-            case 2:
-                placeableObjectPrefab = K9;
-                break;
-            case 3:
-                placeableObjectPrefab = BA9;
-                break;
-        }
-    }
-    private void Slot10Add()
-    {
-        Slot_select = true;
-        category = roomSelection.value;
-        switch (category)
-        {
-            case 0:
-                placeableObjectPrefab = LR10;
-                break;
-            case 1:
-                placeableObjectPrefab = B10;
-                break;
-            case 2:
-                placeableObjectPrefab = K10;
-                break;
-            case 3:
-                placeableObjectPrefab = BA10;
-                break;
-        }
+        placeableObjectPrefab = furnitureItems[category][slotNum];
     }
 
     private void ReleaseIfClicked()
@@ -318,7 +122,7 @@ public class GroundPlacementController : MonoBehaviour
             Destroy(currentPlaceableObject);
         }
 
-        if(Input.GetKeyDown(newObjectHotkey)|| Slot_select)
+        if(Input.GetKeyDown(newObjectHotkey) || Slot_select)
         {
             if(currentPlaceableObject == null)
             {
@@ -338,88 +142,61 @@ public class GroundPlacementController : MonoBehaviour
 
     private void LoadRoomItems()
     {
-        /*
-        LR1 = Resources.Load<GameObject>("sofa");
-        LR2 = Resources.Load<GameObject>("chair");
-        LR3 = Resources.Load<GameObject>("table");
-        LR4 = Resources.Load<GameObject>("bookshelf");
-        LR5 = Resources.Load<GameObject>("Default_Pivot");
-        LR6 = Resources.Load<GameObject>("Default_Pivot");
-        LR7 = Resources.Load<GameObject>("Default_Pivot");
-        LR8 = Resources.Load<GameObject>("Default_Pivot");
-        LR9 = Resources.Load<GameObject>("Default_Pivot");
-        LR10 = Resources.Load<GameObject>("Default_Pivot");
-        B1 = Resources.Load<GameObject>("bed");
-        B2 = Resources.Load<GameObject>("chair");
-        B3 = Resources.Load<GameObject>("bookshelf");
-        B4 = Resources.Load<GameObject>("table");
-        B5 = Resources.Load<GameObject>("sofa");
-        B6 = Resources.Load<GameObject>("Default_Pivot");
-        B7 = Resources.Load<GameObject>("Default_Pivot");
-        B8 = Resources.Load<GameObject>("Default_Pivot");
-        B9 = Resources.Load<GameObject>("Default_Pivot");
-        B10 = Resources.Load<GameObject>("Default_Pivot");
-        K1 = Resources.Load<GameObject>("stove");
-        K2 = Resources.Load<GameObject>("chair");
-        K3 = Resources.Load<GameObject>("table");
-        K4 = Resources.Load<GameObject>("sink");
-        K5 = Resources.Load<GameObject>("fridge");
-        K6 = Resources.Load<GameObject>("Default_Pivot");
-        K7 = Resources.Load<GameObject>("Default_Pivot");
-        K8 = Resources.Load<GameObject>("Default_Pivot");
-        K9 = Resources.Load<GameObject>("Default_Pivot");
-        K10 = Resources.Load<GameObject>("Default_Pivot");
-        BA1 = Resources.Load<GameObject>("shower");
-        BA2 = Resources.Load<GameObject>("sink");
-        BA3 = Resources.Load<GameObject>("Default_Pivot");
-        BA4 = Resources.Load<GameObject>("Default_Pivot");
-        BA5 = Resources.Load<GameObject>("Default_Pivot");
-        BA6 = Resources.Load<GameObject>("Default_Pivot");
-        BA7 = Resources.Load<GameObject>("Default_Pivot");
-        BA8 = Resources.Load<GameObject>("Default_Pivot");
-        BA9 = Resources.Load<GameObject>("Default_Pivot");
-        BA10 = Resources.Load<GameObject>("Default_Pivot");
-        */
-        LR1 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR2 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR3 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR4 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR5 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR6 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR7 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR8 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR9 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        LR10 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B1 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B2 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B3 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B4 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B5 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B6 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B7 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B8 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B9 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        B10 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K1 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K2 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K3 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K4 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K5 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K6 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K7 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K8 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K9 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        K10 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA1 = Resources.Load<GameObject>("Prefabs/Default_Pivotr");
-        BA2 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA3 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA4 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA5 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA6 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA7 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA8 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA9 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
-        BA10 = Resources.Load<GameObject>("Prefabs/Default_Pivot");
+        furnitureItems = new List<List<GameObject>>()
+        {
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            },
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            },
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            },
+            new List<GameObject>()
+            {
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot"),
+                Resources.Load<GameObject>("Prefabs/Default_Pivot")
+            }
+        };
     }
 }
 
