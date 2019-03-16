@@ -29,7 +29,6 @@ namespace Assets.Scripts.Controller
         {
             if(Input.GetKeyDown(KeyCode.M))
             {
-                Debug.Log("Pressed M");
                 context.ChangeState(context.menuSubstate);
             }
         }

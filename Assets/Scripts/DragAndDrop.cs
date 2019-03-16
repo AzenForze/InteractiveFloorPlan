@@ -13,6 +13,8 @@ public class DragAndDrop : MonoBehaviour
     public float rotationSpeed = 50f;
     private Color myColor;
 
+    private float currentScale = 1.0f;
+
     private bool selector = false;
 
     private Slider scaleSlide;
@@ -22,7 +24,7 @@ public class DragAndDrop : MonoBehaviour
 
     void Start()
     {
-        scaleSlide = GameObject.Find("/HUD/Slider").GetComponent<Slider>();
+        scaleSlide = GameObject.Find("/AgentController/HUD/Slider").GetComponent<Slider>();
         myColor = GetComponent<Renderer>().material.GetColor("_Color");
     }
 
@@ -45,7 +47,9 @@ public class DragAndDrop : MonoBehaviour
 
         if(selector)
         {
-            transform.localScale = new Vector3(scaleSlide.value, scaleSlide.value, scaleSlide.value);
+            currentScale = scaleSlide.value;
+            transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+
             if (Input.GetKeyDown(deleteObjectHotkey))
             {
                 Destroy(this.gameObject);
@@ -69,6 +73,7 @@ public class DragAndDrop : MonoBehaviour
         if (selector)
         {
             GetComponent<Renderer>().material.SetColor("_Color", Color.yellow);
+            scaleSlide.value = currentScale;
         }
         else
         {
