@@ -20,10 +20,11 @@ public class AgentController : MonoBehaviour
     {
         RigidbodyFirstPersonController controller = FPController.GetComponent<RigidbodyFirstPersonController>();
         Camera camera = controller.cam;
-        WalkingState = new WalkingState(this, controller, camera);
+        WalkingState = new WalkingState(this, controller, camera, hud);
 
         FlyingState = new FlyingState(this, FlyingCamera, FPController.transform, hud);
         this.state = this.WalkingState;
+        this.state.Enter();
     }
 
     // Update is called once per frame

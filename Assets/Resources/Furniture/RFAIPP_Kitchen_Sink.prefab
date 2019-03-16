@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 33108446445880102}
   - component: {fileID: 23951308096706116}
   - component: {fileID: 64043104305024154}
+  - component: {fileID: 1930339302303616232}
   m_Layer: 2
   m_Name: RFAIPP_Kitchen_Sink
   m_TagString: Untagged
@@ -186,6 +187,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: 28daf6342029013448632950ace203ef, type: 3}
+--- !u!114 &1930339302303616232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459506974456422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3699c3259cf2b41be0d80789630195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  currentScale: 1
+  deleteObjectHotkey: 8
 --- !u!1 &1918589339244564
 GameObject:
   m_ObjectHideFlags: 0

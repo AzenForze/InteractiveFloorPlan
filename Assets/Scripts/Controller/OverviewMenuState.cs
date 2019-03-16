@@ -2,12 +2,12 @@
 
 namespace Assets.Scripts.Controller
 {
-    class MenuState : IState
+    class OverviewMenuState : IState
     {
         private OverviewState context;
         private GameObject hud;
 
-        public MenuState(OverviewState context, GameObject hud)
+        public OverviewMenuState(OverviewState context, GameObject hud)
         {
             this.context = context;
             this.hud = hud;

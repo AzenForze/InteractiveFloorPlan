@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 33498273135930826}
   - component: {fileID: 23240685298751254}
   - component: {fileID: 64564244090487948}
+  - component: {fileID: 7874140271858208511}
   m_Layer: 2
   m_Name: RFAIPP_Fridge
   m_TagString: Untagged
@@ -164,6 +165,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: 47801085321d5a44799e57600f586d8e, type: 3}
+--- !u!114 &7874140271858208511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626472809896912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3699c3259cf2b41be0d80789630195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  currentScale: 1
+  deleteObjectHotkey: 8
 --- !u!1 &1749422509493562
 GameObject:
   m_ObjectHideFlags: 0

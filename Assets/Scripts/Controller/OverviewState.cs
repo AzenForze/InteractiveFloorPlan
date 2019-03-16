@@ -11,7 +11,7 @@ namespace Assets.Scripts.Controller
 
         //states
         public WallState wallState;
-        public MenuState menuState;
+        public OverviewMenuState menuState;
 
         //private
         private GameObject flyingObject;
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Controller
             this.createWallsScript = flyingObject.GetComponent<CreateWalls>();
 
             this.wallState = new WallState(this, createWallsScript);
-            this.menuState = new MenuState(this, hud);
+            this.menuState = new OverviewMenuState(this, hud);
 
             // Initial state
             this.substate = this.wallState;

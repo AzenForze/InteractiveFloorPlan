@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33792442711893074}
   - component: {fileID: 23558811200087650}
   - component: {fileID: 64131856548215944}
+  - component: {fileID: 5669727855981786456}
   m_Layer: 2
   m_Name: RFAIPP_Bookcase_2
   m_TagString: Untagged
@@ -92,3 +93,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: fc3907c76f02224498b9831055de26e6, type: 3}
+--- !u!114 &5669727855981786456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917234172640532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3699c3259cf2b41be0d80789630195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  currentScale: 1
+  deleteObjectHotkey: 8

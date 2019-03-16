@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 33372778514318336}
   - component: {fileID: 23781885425179002}
   - component: {fileID: 64629978285177232}
+  - component: {fileID: 7011078503521465049}
   m_Layer: 2
   m_Name: RFAIPP_Gas_Stove
   m_TagString: Untagged
@@ -185,3 +186,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: c8c651de54d75e04b8ef75ea86586c62, type: 3}
+--- !u!114 &7011078503521465049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592828776644416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3699c3259cf2b41be0d80789630195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  currentScale: 1
+  deleteObjectHotkey: 8
