@@ -4488,7 +4488,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2128198290}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 2
+  m_MaxValue: 3
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
@@ -6329,7 +6329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a35733ec3315e1448a09438685b8231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempObj: {fileID: 1984426794}
   newObjectHotkey: 112
   Slot1_Button: {fileID: 2104842655}
   Slot2_Button: {fileID: 919366013}

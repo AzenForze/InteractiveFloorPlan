@@ -21,6 +21,7 @@ public class DragAndDrop : MonoBehaviour
 
     void Start()
     {
+        scaleSlide = GameObject.Find("/HUD/Slider").GetComponent<Slider>();
         myColor = GetComponent<Renderer>().material.GetColor("_Color");
     }
 
