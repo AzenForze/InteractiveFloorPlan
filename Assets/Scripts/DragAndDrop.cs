@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DragAndDrop : MonoBehaviour
 {
@@ -34,16 +35,21 @@ public class DragAndDrop : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Z))
                 transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
+
             if (Input.GetKeyDown(deleteObjectHotkey))
             {
                 Destroy(this.gameObject);
             }
 
         }
+
         if(selector)
         {
             transform.localScale = new Vector3(scaleSlide.value, scaleSlide.value, scaleSlide.value);
-
+            if (Input.GetKeyDown(deleteObjectHotkey))
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
     void OnMouseDown()
@@ -54,6 +60,12 @@ public class DragAndDrop : MonoBehaviour
         mOffset = gameObject.transform.position - GetMouseAsWorldPoint();
 
         selector = !selector;
+        HighlightObject(selector);
+
+    }
+
+    void HighlightObject(bool selector)
+    {
         if (selector)
         {
             GetComponent<Renderer>().material.SetColor("_Color", Color.yellow);
