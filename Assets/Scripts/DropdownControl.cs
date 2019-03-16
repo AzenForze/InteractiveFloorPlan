@@ -32,6 +32,8 @@ public class DropdownControl : MonoBehaviour
 
         SetItemSlots();
 
+        SetInventoryToLivingRoom();
+
     }
 
     // Update is called once per frame

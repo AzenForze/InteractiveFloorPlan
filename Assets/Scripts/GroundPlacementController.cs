@@ -18,7 +18,6 @@ public class GroundPlacementController : MonoBehaviour
     private List<List<GameObject>> furnitureItems;
 
     private float iRotation;
-    private float speed = 10f;
 
     private bool Slot_select = false;
 
